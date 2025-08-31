@@ -1,4 +1,5 @@
 # Weather App
+![Weather Screenshot](Cloudy.jpg)
 
 ## Description
 
@@ -10,6 +11,8 @@ The Weather App is a simple web application that allows users to search for curr
 - Displays current temperature, weather conditions, and an icon representing the weather.
 - Responsive design for mobile and desktop views.
 - Error handling for invalid city names.
+
+![Weather Screenshot](Clear.jpg)
 
 ## Technologies Used
 
