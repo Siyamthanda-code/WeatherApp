@@ -14,6 +14,7 @@ The Weather App is a simple web application that allows users to search for curr
 
 ![Weather Screenshot](Clear.jpg)
 
+![Weather Screenshot](Not%20Found.jpg)
 ## Technologies Used
 
 - HTML
