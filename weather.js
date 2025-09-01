@@ -3,63 +3,10 @@ const apiKey = '27e67cd2774dd8a7ccf7da496bb96f74';
 const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
-  
-const url = (city)=> `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
+const url = (city) => `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
-async function getWeatherByLocation(city){
-     try{
-         const resp = await fetch(url(city));
-         if (!resp.ok){
-            throw new Error ('City not found');
-         }
-         const respData = await resp.json();
-     console.log(respData);
-           addWeatherToPage(respData);
-        }catch (error) {
-            console.error(error);
-            main.innerHTML = `<p>${error.message}</p>`;
-        }
-     }
-
-      function addWeatherToPage(data){
-          const temp = Ktoc(data.main.temp);
-
-          const weather = document.createElement('div')
-          weather.classList.add('weather');
-
-          weather.innerHTML = `
-          <h2><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /> ${temp}°C <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /></h2>
-          <small>${data.weather[0].main}</small>
-          
-          `;
-
-
-        //   cleanup 
-          main.innerHTML= "";
-           main.appendChild(weather);
-      };
-
-
-     function Ktoc(K){
-         return Math.floor(K - 273.15);
-     }
-
-
-
-     form.addEventListener('submit',(e) =>{
-        e.preventDefault();
-
-        const city = search.value;
-
-        if(city){
-            getWeatherByLocation(city)
-        }
-
-
-     });
-
-     // Create raindrops and snowflakes once
+// Create raindrops and snowflakes once on page load
 const rainContainer = document.querySelector('.rain');
 for (let i = 0; i < 20; i++) {
   const drop = document.createElement('div');
@@ -76,6 +23,59 @@ for (let i = 0; i < 20; i++) {
   flake.style.animationDelay = `${Math.random() * 8}s`;
   snowContainer.appendChild(flake);
 }
+
+async function getWeatherByLocation(city) {
+  try {
+    const resp = await fetch(url(city));
+    if (!resp.ok) {
+      throw new Error('City not found');
+    }
+    const respData = await resp.json();
+    console.log(respData);
+    addWeatherToPage(respData);
+  } catch (error) {
+    console.error(error);
+    main.innerHTML = `<p>${error.message}</p>`;
+  }
+}
+
+function addWeatherToPage(data) {
+  const temp = Ktoc(data.main.temp);
+
+  const weather = document.createElement('div');
+  weather.classList.add('weather');
+
+  weather.innerHTML = `
+    <h2><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /> ${temp}°C <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /></h2>
+    <small>${data.weather[0].main}</small>
+  `;
+
+  // Clear previous weather info but keep animation container intact
+  // Assuming .weather-animation is static in your HTML
+  const animationContainer = document.querySelector('.weather-animation');
+  main.innerHTML = "";
+  main.appendChild(weather);
+  if (animationContainer) {
+    main.appendChild(animationContainer);
+  }
+
+  // Update animation based on weather code
+  updateWeatherAnimation(data.weather[0].id);
+}
+
+function Ktoc(K) {
+  return Math.floor(K - 273.15);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const city = search.value;
+
+  if (city) {
+    getWeatherByLocation(city);
+  }
+});
 
 // Function to toggle animations based on weather code
 function updateWeatherAnimation(weatherCode) {
@@ -99,34 +99,6 @@ function updateWeatherAnimation(weatherCode) {
     snow.style.display = 'block'; // Snow
   }
 }
-
-// Modify addWeatherToPage to call updateWeatherAnimation
-function addWeatherToPage(data){
-  const temp = Ktoc(data.main.temp);
-
-  const weather = document.createElement('div')
-  weather.classList.add('weather');
-
-  weather.innerHTML = `
-    <h2><img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /> ${temp}°C <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" /></h2>
-    <small>${data.weather[0].main}</small>
-  `;
-
-  // Clear previous content except weather-animation container
-  main.innerHTML = "";
-  main.appendChild(weather);
-
-  // Append weather-animation container if missing
-  let animationContainer = document.querySelector('.weather-animation');
-  if (!animationContainer) {
-    animationContainer = document.createElement('div');
-    animationContainer.classList.add('weather-animation');
-    animationContainer.innerHTML = `
-      <div class="sun"></div>
-      <div class="clouds">
-        <div class="cloud"></div>
-        <div class="cloud"></div>
-      </div>
       <div class="rain"></div>
       <div class="snow"></div>
     `;
@@ -153,3 +125,4 @@ function addWeatherToPage(data){
   // Update animation based on weather code
   updateWeatherAnimation(data.weather[0].id);
 }
+
