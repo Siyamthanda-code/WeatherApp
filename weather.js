@@ -99,30 +99,3 @@ function updateWeatherAnimation(weatherCode) {
     snow.style.display = 'block'; // Snow
   }
 }
-      <div class="rain"></div>
-      <div class="snow"></div>
-    `;
-    main.appendChild(animationContainer);
-
-    // Create raindrops and snowflakes inside new container
-    const rainContainer = animationContainer.querySelector('.rain');
-    for (let i = 0; i < 20; i++) {
-      const drop = document.createElement('div');
-      drop.classList.add('drop');
-      drop.style.left = `${i * 5}%`;
-      rainContainer.appendChild(drop);
-    }
-    const snowContainer = animationContainer.querySelector('.snow');
-    for (let i = 0; i < 20; i++) {
-      const flake = document.createElement('div');
-      flake.classList.add('snowflake');
-      flake.style.left = `${Math.random() * 100}%`;
-      flake.style.animationDelay = `${Math.random() * 8}s`;
-      snowContainer.appendChild(flake);
-    }
-  }
-
-  // Update animation based on weather code
-  updateWeatherAnimation(data.weather[0].id);
-}
-
