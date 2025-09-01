@@ -189,3 +189,63 @@ input:focus {
   0% { transform: translateY(0) translateX(0); opacity: 0.8; }
   100% { transform: translateY(200px) translateX(30px); opacity: 0; }
 }
+
+/* Clear (similar to sun, but maybe a subtle glow or no animation) */
+.clear {
+  position: absolute;
+  top: 20px;
+  left: 120px;
+  width: 80px;
+  height: 80px;
+  display: none;
+  animation: pulse 2s infinite;
+}
+
+.clear img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Thunderstorm */
+.thunderstorm {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  display: none;
+  animation: flashThunder 1.5s infinite;
+  transform: translateX(-50%);
+}
+
+.thunderstorm img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+/* Partially Cloudy */
+.partially-cloudy {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  opacity: 0.7;
+  pointer-events: none;
+  display: none;
+  animation: floatCloud 30s linear infinite;
+}
+
+.partially-cloudy img {
+  width: 120px;
+  height: auto;
+}
+
+/* Thunderstorm flash animation */
+@keyframes flashThunder {
+  0%, 100% { opacity: 0.8; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(2); }
+}
+
