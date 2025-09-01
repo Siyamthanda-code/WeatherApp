@@ -211,3 +211,92 @@ input:focus {
   0% { transform: translateY(0) translateX(0); opacity: 0.8; }
   100% { transform: translateY(200px) translateX(30px); opacity: 0; }
 }
+.weather-animation {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  pointer-events: none;
+  margin-top: 1rem;
+  color: #fff; /* icon color */
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Sun */
+.sun {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 80px;
+  animation: floatSun 6s ease-in-out infinite, pulse 2s infinite;
+  display: none;
+}
+
+/* Clouds */
+.clouds {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  font-size: 60px;
+  display: flex;
+  gap: 20px;
+  opacity: 0.8;
+  pointer-events: none;
+  display: none;
+  animation: floatCloud 30s linear infinite;
+}
+
+/* Rain */
+.rain {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  font-size: 50px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  display: none;
+  animation: rainDrop 1.5s linear infinite;
+}
+
+/* Snow */
+.snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 40px;
+  pointer-events: none;
+  overflow: visible;
+  display: none;
+  animation: fallSnow 8s linear infinite;
+}
+
+/* Animations */
+@keyframes floatSun {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 10px #ffde17; }
+  50% { text-shadow: 0 0 20px #ffde17; }
+}
+
+@keyframes floatCloud {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(110vw); }
+}
+
+@keyframes rainDrop {
+  0% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+@keyframes fallSnow {
+  0% { transform: translateY(0) translateX(0); opacity: 0.8; }
+  100% { transform: translateY(200px) translateX(30px); opacity: 0; }
+}
+
