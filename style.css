@@ -5,13 +5,18 @@
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-    background-color: burlywood;
+    background-image: url('icons/wall.jpg'); 
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat; 
+    
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     flex-direction: column;
 }
+
 input {
     padding: 1rem;
     border-radius: 25px;
@@ -248,4 +253,5 @@ input:focus {
   0%, 100% { opacity: 0.8; filter: brightness(1); }
   50% { opacity: 1; filter: brightness(2); }
 }
+
 
