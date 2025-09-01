@@ -103,6 +103,11 @@ input:focus {
   display: none;
 }
 
+.sun img {
+  width: 100%;
+  height: 100%;
+}
+
 /* Clouds */
 .clouds {
   position: absolute;
@@ -114,12 +119,12 @@ input:focus {
   opacity: 0.8;
   pointer-events: none;
   display: none;
+  animation: floatCloud 30s linear infinite;
 }
 
-.cloud {
+.clouds img {
   width: 120px;
-  height: 60px;
-  animation: floatCloud 30s linear infinite;
+  height: auto;
 }
 
 /* Rain */
@@ -132,12 +137,12 @@ input:focus {
   justify-content: space-around;
   pointer-events: none;
   display: none;
+  animation: rainDrop 1.5s linear infinite;
 }
 
-.drop {
-  width: 20px;
-  height: 40px;
-  animation: rainDrop 1.5s linear infinite;
+.rain img {
+  width: 40px;
+  height: auto;
   opacity: 0.7;
 }
 
@@ -151,6 +156,12 @@ input:focus {
   pointer-events: none;
   display: none;
   animation: fallSnow 8s linear infinite;
+}
+
+.snow img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
 }
 
 /* Animations */
