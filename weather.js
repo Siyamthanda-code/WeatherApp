@@ -81,18 +81,30 @@ form.addEventListener('submit', (e) => {
 function updateWeatherAnimation(weatherCode) {
   const sun = document.querySelector('.sun');
   const clouds = document.querySelector('.clouds');
+  const clear = document.querySelector('.clear');
   const rain = document.querySelector('.rain');
+  const thunderstorm = document.querySelector('.thunderstorm');
+  const partiallyCloudy = document.querySelector('.partially-cloudy');
   const snow = document.querySelector('.snow');
 
+  // Hide all first
   sun.style.display = 'none';
   clouds.style.display = 'none';
+  clear.style.display = 'none';
   rain.style.display = 'none';
+  thunderstorm.style.display = 'none';
+  partiallyCloudy.style.display = 'none';
   snow.style.display = 'none';
 
   if (weatherCode === 800) {
     sun.style.display = 'block'; // Clear sky
-  } else if (weatherCode >= 801 && weatherCode < 900) {
-    clouds.style.display = 'flex'; // Cloudy
+    clear.style.display = 'block';
+  } else if (weatherCode >= 801 && weatherCode <= 802) {
+    partiallyCloudy.style.display = 'block'; // Partially cloudy
+  } else if (weatherCode >= 803 && weatherCode <= 804) {
+    clouds.style.display = 'flex'; // Mostly cloudy
+  } else if (weatherCode >= 200 && weatherCode < 300) {
+    thunderstorm.style.display = 'block'; // Thunderstorm
   } else if (weatherCode >= 300 && weatherCode < 600) {
     rain.style.display = 'flex'; // Rain
   } else if (weatherCode >= 600 && weatherCode < 700) {
