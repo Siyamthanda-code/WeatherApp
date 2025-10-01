@@ -12,8 +12,6 @@ The Weather App is a simple web application that allows users to search for curr
 - Responsive design for mobile and desktop views.
 - Error handling for invalid city names.
 
-![Weather Screenshot](Clear.PNG)
-
 ![Weather Screenshot](Not%20Found.PNG)
 ## Technologies Used
 
