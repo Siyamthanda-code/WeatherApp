@@ -7,51 +7,87 @@
         <title>WeatherWithSiya</title>
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
 
     <body>
-        <form id="form">
-            <input type="text" id="search" placeholder="Search By Location" autocomplete="off">
-        </form>
-       <main id="main">
-  <div class="weather-animation">
-    <div class="sun">
-      <img src="icons/sun.svg" alt="Sun" />
-    </div>
-    <div class="clouds">
-      <img src="icons/cloudy.png" alt="Cloud" class="cloud" />
-    </div>
-    <div class="clear">
-      <img src="icons/cloudy.svg" alt="Cloud" class="cloud" />
-    </div>
-    <div class="rain">
-      <img src="icons/overcast.svg" alt="Rain" class="drop" />
-    </div>
-    <div class="thunderstorm">
-      <img src="icons/thunderstorm.svg" alt="Thunderstorm" class="cloud" />
-    </div>
-    <div class="partially-cloudy">
-      <img src="icons/clear.svg" alt="Partially Cloudy" class="cloud" />
-    </div>
-    <div class="snow">
-      <img src="icons/snow.svg" alt="Snow" />
-      <img src="icons/snowman.svg" alt="Snow" />
-    </div>
-  </div>
-</main>
-
-
+        <div class="container">
+            <form id="form">
+                <input type="text" id="search" placeholder="Search By Location" autocomplete="off">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            
+            <div class="weather-card" id="weather-card" style="display: none;">
+                <div class="weather-header">
+                    <h2 id="city-name">City Name</h2>
+                    <p id="weather-date"></p>
+                </div>
+                
+                <div class="weather-main">
+                    <div class="temperature">
+                        <span id="temp-value">--</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="weather-icon">
+                        <img id="weather-icon-img" src="" alt="Weather Icon">
+                    </div>
+                </div>
+                
+                <div class="weather-description" id="weather-desc">
+                    Weather Description
+                </div>
+                
+                <div class="weather-details">
+                    <div class="detail">
+                        <i class="fas fa-tint"></i>
+                        <span>Humidity</span>
+                        <span id="humidity">--%</span>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-wind"></i>
+                        <span>Wind</span>
+                        <span id="wind-speed">-- m/s</span>
+                    </div>
+                    <div class="detail">
+                        <i class="fas fa-thermometer-half"></i>
+                        <span>Feels Like</span>
+                        <span id="feels-like">--°C</span>
+                    </div>
+                </div>
+            </div>
+            
+            <main id="main">
+                <div class="weather-animation">
+                    <div class="sun">
+                        <img src="icons/sun.svg" alt="Sun" />
+                    </div>
+                    <div class="clouds">
+                        <img src="icons/cloudy.png" alt="Cloud" class="cloud" />
+                    </div>
+                    <div class="clear">
+                        <img src="icons/cloudy.svg" alt="Cloud" class="cloud" />
+                    </div>
+                    <div class="rain">
+                        <img src="icons/overcast.svg" alt="Rain" class="drop" />
+                    </div>
+                    <div class="thunderstorm">
+                        <img src="icons/thunderstorm.svg" alt="Thunderstorm" class="cloud" />
+                    </div>
+                    <div class="partially-cloudy">
+                        <img src="icons/clear.svg" alt="Partially Cloudy" class="cloud" />
+                    </div>
+                    <div class="snow">
+                        <img src="icons/snow.svg" alt="Snow" />
+                        <img src="icons/snowman.svg" alt="Snow" />
+                    </div>
+                </div>
+            </main>
+            
+            <div class="location-btn">
+                <button id="current-location"><i class="fas fa-location-arrow"></i> Use Current Location</button>
+            </div>
+        </div>
         
         <script src="weather.js"></script>
     </body>
-
-
 </html>
-
-
-
-
-
-
-
-
